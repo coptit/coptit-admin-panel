@@ -1,7 +1,7 @@
 {
-  "name": "@examples/minimal-react",
+  "name": "coptit-admin-panel",
   "private": true,
-  "version": "10.18.0",
+  "version": "0.0.1",
   "workspaces": [
     "client",
     "server"

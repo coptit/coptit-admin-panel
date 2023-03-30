@@ -1,8 +1,13 @@
 import { useState } from "react";
 import * as EmailValidator from "email-validator";
 import { client } from "../App";
+import React from "react";
 
-export function Login({ setAuth }: { setAuth: any }) {
+export function Login({
+  setAuth,
+}: {
+  setAuth: React.Dispatch<React.SetStateAction<boolean>>;
+}) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [continueButtonDisabled, setContinueButtonDisabled] = useState(true);

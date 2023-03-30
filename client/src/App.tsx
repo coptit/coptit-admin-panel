@@ -9,6 +9,7 @@ import { Message } from "./components/Message";
 import { Sidebar } from "./components/Sidebar";
 import { AppRouter } from "../../server";
 import { trpc } from "./utils/trpc";
+import React from "react";
 
 export const client = createTRPCProxyClient<AppRouter>({
   links: [
@@ -30,7 +31,7 @@ export function App() {
     })
   );
 
-  const [auth, setAuth] = useState(true);
+  const [auth, setAuth] = useState(false);
   const [service, setService] = useState(0);
 
   if (!auth) {

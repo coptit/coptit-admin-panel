@@ -150,13 +150,22 @@ createHTTPServer({
     return {};
   },
 }).listen(4001);
+console.log("Started TRPC server at 4001");
+
+/*
+Server for REST API Endpoints
+*/
 
 const app = express();
-app.use(cors());
-app.use(express.json()); // for allowing client to send json
-app.use(express.urlencoded({ extended: true })); // for using query sting & request params efficiently
+app.use(
+  cors({
+    origin: "*",
+  })
+);
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 
-app.post("/s/sendmail", async (req: Request, res: Response) => {
+app.post("/api/sendmail", async (req: Request, res: Response) => {
   const to = req.body.to;
   const subject = req.body.subject;
   const text = req.body.text;
@@ -178,5 +187,5 @@ app.post("/s/sendmail", async (req: Request, res: Response) => {
 });
 
 app.listen(4002, () => {
-  console.log("App listening at port 4002");
+  console.log("REST App listening at port 4002");
 });

@@ -2,6 +2,7 @@ import type { DiscordChannelInfo } from "../../../server/discordResponseType";
 import { useState } from "react";
 import { client } from "../App";
 import { trpc } from "../utils/trpc";
+import React from "react";
 
 export function Message() {
   const channels = trpc.getAllChannels.useQuery();
@@ -13,7 +14,7 @@ export function Message() {
     return (
       <div className="h-full flex justify-center items-center">
         <img
-          src="../../images/logo.png"
+          src="https://tiddi.kunalsin9h.dev/_l8inER"
           alt="logo"
           className="invert h-12 w-12"
         />{" "}

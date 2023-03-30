@@ -1,3 +1,5 @@
+import React from "react";
+
 export function Email() {
   return (
     <div className="text-white text-xl h-full flex justify-center items-center">

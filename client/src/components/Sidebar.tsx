@@ -1,19 +1,26 @@
 import { useState } from "react";
+import React from "react";
 
-export function Sidebar({ setService }: { setService: any }) {
+export function Sidebar({
+  setService,
+}: {
+  setService: React.Dispatch<React.SetStateAction<number>>;
+}) {
   const [active, setActive] = useState(0);
 
   return (
     <div className="p-8 flex flex-col items-start">
       <button
-        className={`m-2 p-2 font-bold flex justify-center items-center hover:underline ${active === 0 ? "" : ""}`}
+        className={`m-2 p-2 font-bold flex justify-center items-center hover:underline ${
+          active === 0 ? "" : ""
+        }`}
         onClick={() => {
           setService(0);
           setActive(0);
         }}
       >
         <img
-          src="../../images/logo.png"
+          src="https://tiddi.kunalsin9h.dev/_l8inER"
           alt="coptit logo"
           className="h-10 w-10 mr-2"
         />
