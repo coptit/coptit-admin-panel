@@ -30,7 +30,7 @@ export function App() {
     })
   );
 
-  const [auth, setAuth] = useState(false);
+  const [auth, setAuth] = useState(true);
   const [service, setService] = useState(0);
 
   if (!auth) {
