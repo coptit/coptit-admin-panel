@@ -1,0 +1,33 @@
+name: Coptit Admin Panel CI
+
+on:
+  push:
+    branches: [master]
+  pull_request:
+    branches: [master]
+
+jobs:
+
+  lint:
+    runs-on: ubuntu-latest
+    if: github.ref != 'refs/heads/master'
+    steps:
+    - uses: actions/checkout@v3
+    - uses: actions/setup-node@v3
+      with:
+        node-version: "19.x"
+    - run: npm ci --omit=dev
+    - run: npm run lint
+
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+    - name: Build the Docker image
+      run: |
+        docker build -t ghcr.io/coptit/coptit-admin-panel:latest -f Dockerfile .
+    - name: Push to Github Container Registry (ghcr.io)
+      if: github.ref == 'refs/heads/master'
+      run: |
+        echo "${{ secrets.GHCR }}" | docker login ghcr.io -u "coptit" --password-stdin
+        docker push ghcr.io/coptit/coptit-admin-panel:latest
