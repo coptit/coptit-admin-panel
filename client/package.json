@@ -10,11 +10,10 @@
     "start": "vite preview --host 127.0.0.1"
   },
   "dependencies": {
-    "@tanstack/react-query": "^4.18.0",
     "@trpc/client": "^10.18.0",
-    "@trpc/react-query": "^10.18.0",
     "@trpc/server": "^10.18.0",
     "email-validator": "^2.0.4",
+    "jsonwebtoken": "^9.0.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
   },
