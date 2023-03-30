@@ -7,7 +7,6 @@ on:
     branches: [master]
 
 jobs:
-
   lint:
     runs-on: ubuntu-latest
     if: github.ref != 'refs/heads/master'
@@ -25,9 +24,13 @@ jobs:
     - uses: actions/checkout@v3
     - name: Build the Docker image
       run: |
-        docker build -t ghcr.io/coptit/coptit-admin-panel:latest -f Dockerfile .
-    - name: Push to Github Container Registry (ghcr.io)
+        # docker build -t ghcr.io/coptit/coptit-admin-panel:latest -f Dockerfile .
+        docker build -t kunalsin9h/coptit-admin-panel:latest -f Dockerfile .
+    # - name: Push to Github Container Registry (ghcr.io)
+    - name: Push to Docker Hub
       if: github.ref == 'refs/heads/master'
       run: |
-        echo "${{ secrets.GHCR }}" | docker login ghcr.io -u "coptit" --password-stdin
-        docker push ghcr.io/coptit/coptit-admin-panel:latest
+        # echo "${{ secrets.GHCR }}" | docker login ghcr.io -u "coptit" --password-stdin
+        echo "${{ secrets.DH }}" | docker login -u "kunalsin9h" --password-stdin
+        # docker push ghcr.io/coptit/coptit-admin-panel:latest
+        docker push kunalsin9h/coptit-admin-panel:latest
