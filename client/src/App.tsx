@@ -14,7 +14,7 @@ import React from "react";
 export const client = createTRPCProxyClient<AppRouter>({
   links: [
     httpBatchLink({
-      url: "http://127.0.0.1:4001",
+      url: "http://localhost:4001",
     }),
   ],
 });
