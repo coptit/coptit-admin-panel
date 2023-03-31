@@ -14,7 +14,7 @@ import React from "react";
 export const client = createTRPCProxyClient<AppRouter>({
   links: [
     httpBatchLink({
-      url: "http://0.0.0.0:4001",
+      url: "https://coptit-back.hop.sh",
     }),
   ],
 });
@@ -25,7 +25,7 @@ export function App() {
     trpc.createClient({
       links: [
         httpBatchLink({
-          url: "http://0.0.0.0:4001",
+          url: "https://coptit-back.hop.sh",
         }),
       ],
     })
