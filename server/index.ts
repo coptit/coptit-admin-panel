@@ -15,28 +15,26 @@ const publicProcedure = t.procedure;
 const router = t.router;
 
 const appRouter = router({
-  sendmail: publicProcedure
+  sendMail: publicProcedure
     .input(
       z.object({
-        to: z.string().email().nonempty(),
+        emails: z.array(z.string()),
         subject: z.string().nonempty(),
         text: z.string().nullish(),
         html: z.string().nullish(),
       })
     )
     .mutation(async ({ input }) => {
-      const mailmeta: mailMeta = {
-        to: input.to,
-        subject: input.subject,
-        text: input.text ?? "",
-        html: input.text ?? "",
-      };
+      for (const email of input.emails) {
+        const mailData: mailMeta = {
+          to: email,
+          subject: input.subject,
+          text: input.text ?? "",
+          html: input.html ?? "",
+        };
 
-      const messageid = await sendMail(mailmeta);
-
-      return {
-        messageid,
-      };
+        await sendMail(mailData);
+      }
     }),
 
   auth: publicProcedure
