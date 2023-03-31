@@ -136,6 +136,38 @@ const appRouter = router({
       const data = await res.json();
 
       return {
+        type: "New Message",
+        response: JSON.stringify(data),
+      };
+    }),
+
+  updateMessage: publicProcedure
+    .input(
+      z.object({
+        channelID: z.string().nonempty(),
+        messageID: z.string().nonempty(),
+        content: z.string().nonempty(),
+      })
+    )
+    .mutation(async ({ input }) => {
+      const botToken = process.env.BOT_TOKEN;
+
+      const res = await fetch(
+        `https://discord.com/api/v10/channels/${input.channelID}/messages/${input.messageID}`,
+        {
+          method: "PATCH",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: "Bot " + botToken,
+          },
+          body: input.content,
+        }
+      );
+
+      const data = await res.json();
+
+      return {
+        type: "Update Message",
         response: JSON.stringify(data),
       };
     }),

@@ -9,6 +9,11 @@ export function Message() {
 
   const [selectChannel, setSelectChannel] = useState("");
   const [textareaValue, setTextareaValue] = useState("");
+  const [messageID, setMessageID] = useState("");
+
+  // Modes can be 0 -> New Message
+  // Modes can be  1 -> Edit Message
+  const [messageMode, setMessageMode] = useState(0);
 
   if (channels.data?.channels === undefined) {
     return (
@@ -34,6 +39,34 @@ export function Message() {
 
   return (
     <div className="flex flex-col">
+      <div className="p-8">
+        <button
+          onClick={(e) => {
+            e.preventDefault;
+            setMessageMode(0);
+          }}
+          className={`px-4 py-2 mr-8 drop-shadow-2xl rounded text-black font-bold  ${
+            messageMode === 0
+              ? "scale-110 duration-300 bg-[#eda812]"
+              : "bg-[#F4C868]"
+          } `}
+        >
+          New
+        </button>
+        <button
+          onClick={(e) => {
+            e.preventDefault;
+            setMessageMode(1);
+          }}
+          className={`px-4 py-2 drop-shadow-2xl rounded text-black font-bold  ${
+            messageMode === 1
+              ? "scale-110 duration-300 bg-[#eda812]"
+              : "bg-[#F4C868]"
+          } `}
+        >
+          Edit
+        </button>
+      </div>
       <div className="flex justify-content items-center p-4 m-4">
         <label>
           <span className="text-white text-xl">Select Channel</span>
@@ -57,6 +90,20 @@ export function Message() {
             })}
           </select>
         </label>
+        {messageMode === 1 ? (
+          <div>
+            <label>
+              <span className="text-white text-xl">Message ID</span>
+              <input
+                placeholder="Message ID"
+                className="p-2 text-l m-2 border-none rounded bg-white w-52"
+                onChange={(e) => {
+                  setMessageID(e.target.value);
+                }}
+              />
+            </label>
+          </div>
+        ) : null}
       </div>
       <div className="flex justify-content items-center p-4 m-4">
         <label>
@@ -72,19 +119,30 @@ export function Message() {
       </div>
       <div>
         <button
-          className="text-xl text-white px-8 py-2 m-8 bg-[#FA7070] hover:bg-[#f83a3a]"
+          className="font-bold text-black px-8 py-2 m-8 bg-[#F4C868] hover:bg-[#eda812] rounded hover:scale-110 duration-300"
           onClick={async (e) => {
             e.preventDefault;
 
-            const res = await client.sendMessage.mutate({
-              id: selectChannel,
-              content: textareaValue,
-            });
+            // send message
+            if (messageMode === 0) {
+              const res = await client.sendMessage.mutate({
+                id: selectChannel,
+                content: textareaValue,
+              });
 
-            setTextareaValue(res.response);
+              setTextareaValue(res.type + "\n\n\n" + res.response);
+            } else {
+              const res = await client.updateMessage.mutate({
+                messageID: messageID,
+                channelID: selectChannel,
+                content: textareaValue,
+              });
+
+              setTextareaValue(res.type + "\n\n\n" + res.response);
+            }
           }}
         >
-          Send
+          {messageMode === 0 ? "Send" : "Update (Replace)"}
         </button>
       </div>
     </div>
