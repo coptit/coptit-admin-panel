@@ -47,7 +47,7 @@ export function Login({
 
           <button
             disabled={continueButtonDisabled}
-            className="bg-[#ABC270] p-2 rounded-l mx-14 my-4 border-solid border-2 border-[#697d36] hover:scale-105 duration-300 hover:bg-[#87a145] disabled:opacity-50 disabled:scale-100 disabled:hover:bg-[#ABC270]"
+            className="bg-[#ABC270] p-2 rounded-l mx-14 my-4 border-solid border-2 border-[#697d36] hover:scale-105 duration-300 hover:bg-[#87a145] disabled:opacity-50 disabled:scale-100 disabled:hover:bg-[#ABC270] active:bg-black active:text-white"
             onClick={async (e) => {
               e.preventDefault;
 
