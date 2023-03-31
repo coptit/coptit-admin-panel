@@ -119,7 +119,7 @@ export function Message() {
       </div>
       <div>
         <button
-          className="font-bold text-black px-8 py-2 m-8 bg-[#F4C868] hover:bg-[#eda812] rounded hover:scale-110 duration-300"
+          className="font-bold text-black px-8 py-2 m-8 bg-[#F4C868] hover:bg-[#eda812] rounded hover:scale-110 duration-300 active:bg-black active:text-white"
           onClick={async (e) => {
             e.preventDefault;
 
