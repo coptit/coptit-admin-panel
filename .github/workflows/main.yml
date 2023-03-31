@@ -15,7 +15,7 @@ jobs:
     - uses: actions/setup-node@v3
       with:
         node-version: "19.x"
-    - run: npm ci --omit=dev
+    - run: npm ci
     - run: npm run lint
 
   build:
