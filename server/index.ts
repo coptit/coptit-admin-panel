@@ -144,7 +144,9 @@ const appRouter = router({
 export type AppRouter = typeof appRouter;
 
 createHTTPServer({
-  middleware: cors(),
+  middleware: cors({
+    origin: "*",
+  }),
   router: appRouter,
   createContext() {
     return {};
