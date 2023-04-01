@@ -69,7 +69,7 @@ export function Message() {
       </div>
       <div className="flex justify-content items-center p-4 m-4">
         <label>
-          <span className="text-white text-xl">Select Channel</span>
+          <span className="text-white text-xl">Select Channel: </span>
           <select
             value={selectChannel}
             onChange={(e) => {
@@ -91,9 +91,9 @@ export function Message() {
           </select>
         </label>
         {messageMode === 1 ? (
-          <div>
+          <div className="ml-8">
             <label>
-              <span className="text-white text-xl">Message ID</span>
+              <span className="text-white text-xl">Message ID: </span>
               <input
                 placeholder="Message ID"
                 className="p-2 text-l m-2 border-none rounded bg-white w-52"
@@ -107,9 +107,10 @@ export function Message() {
       </div>
       <div className="flex justify-content items-center p-4 m-4">
         <label>
-          <span className="text-white text-xl">Message JSON Payload</span>
+          <span className="text-white text-xl">Message JSON Payload: </span>
         </label>
         <textarea
+          placeholder="Message content created using discohook.org"
           value={textareaValue}
           onChange={(e) => {
             setTextareaValue(e.target.value);

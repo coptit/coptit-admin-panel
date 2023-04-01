@@ -11,7 +11,7 @@ export function Sidebar({
   return (
     <div className="p-8 flex flex-col items-start">
       <button
-        className={`m-2 p-2 font-bold flex justify-center items-center hover:underline ${
+        className={`m-2 p-2 font-bold flex justify-center items-center text-xl hover:scale-105 duration-300 ${
           active === 0 ? "" : ""
         }`}
         onClick={() => {
@@ -20,9 +20,9 @@ export function Sidebar({
         }}
       >
         <img
-          src="https://tiddi.kunalsin9h.dev/_l8inER"
+          src="https://tiddi.kunalsin9h.dev/VMvufrA"
           alt="coptit logo"
-          className="h-10 w-10 mr-2"
+          className="h-14 w-14 mr-2"
         />
         COPTIT Admin
       </button>
