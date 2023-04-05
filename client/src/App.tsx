@@ -1,7 +1,6 @@
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { httpBatchLink, createTRPCProxyClient } from "@trpc/client";
 import { useState } from "react";
-import { DM } from "./components/DM";
 import { Email } from "./components/Email";
 import { Home } from "./components/Home";
 import { Login } from "./components/Login";
@@ -59,7 +58,6 @@ export function App() {
           <div className="w-full overflow-hidden">
             {service === 0 ? <Home /> : null}
             {service === 1 ? <Message /> : null}
-            {service === 2 ? <DM /> : null}
             {service === 3 ? <Email /> : null}
           </div>
         </div>

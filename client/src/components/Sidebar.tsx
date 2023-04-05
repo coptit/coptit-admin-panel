@@ -38,17 +38,6 @@ export function Sidebar({
         Message
       </button>
       <button
-        className={`m-4 p-2 rounded hover:bg-[#697d36] hover:scale-105 duration-300 ${
-          active === 2 ? "bg-[#697d36]" : "bg-[#ABC270]"
-        }`}
-        onClick={() => {
-          setService(2);
-          setActive(2);
-        }}
-      >
-        Discord DM
-      </button>
-      <button
         className={`m-4 p-2 rounded  hover:bg-[#697d36] hover:scale-105 duration-300 ${
           active === 3 ? "bg-[#697d36]" : "bg-[#ABC270]"
         }`}
