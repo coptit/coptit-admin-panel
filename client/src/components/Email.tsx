@@ -67,7 +67,8 @@ export function Email() {
 
               const validEmails: string[] = [];
 
-              for (const email of emails) {
+              for (let email of emails) {
+                email = email.trim();
                 if (EmailValidator.validate(email)) {
                   validEmails.push(email);
                 }
