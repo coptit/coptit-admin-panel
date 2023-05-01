@@ -14,7 +14,7 @@ export function Login({
 
   return (
     <div className="flex justify-center items-center h-full">
-      <div className="bg-[#FDA769] w-96 h-72 m-8 min-w-[360px] rounded drop-shadow-2xl">
+      <div className="bg-grayColor w-96 h-72 m-8 min-w-[360px] rounded drop-shadow-2xl">
         <div className="flex flex-col px-7 ">
           <span className="text-xl py-2">Email</span>
           <input
@@ -47,7 +47,7 @@ export function Login({
 
           <button
             disabled={continueButtonDisabled}
-            className="bg-[#ABC270] p-2 rounded-l mx-14 my-4 border-solid border-2 border-[#697d36] hover:scale-105 duration-300 hover:bg-[#87a145] disabled:opacity-50 disabled:scale-100 disabled:hover:bg-[#ABC270] active:bg-black active:text-white"
+            className=" text-white bg-lightBlue p-2 rounded-l mx-14 my-4 border-solid border-2 border-[#697d36] hover:scale-105 duration-300 hover:bg- disabled:opacity-50 disabled:scale-100 disabled:hover:bg-darkBlue active:bg-black active:text-white"
             onClick={async (e) => {
               e.preventDefault;
 
