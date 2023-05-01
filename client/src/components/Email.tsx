@@ -14,8 +14,8 @@ export function Email() {
   return (
     <div className="">
       <div className="flex justify-center h-[80%]">
-        <div className="p-4 m-8 grow rounded-xl border-solid border-2 flex flex-col bg-[#1e1915] ">
-          <label className="text-white font-bold p-2 m-2">
+        <div className="p-4 m-8 grow rounded-xl border-solid border-2 flex flex-col bg-grayColor ">
+          <label className="text-back font-bold p-2 m-2">
             Subject:
             <input
               placeholder="Email subject"
@@ -25,7 +25,7 @@ export function Email() {
               }}
             />
           </label>
-          <label className="text-white font-bold p-2 m-2">
+          <label className="text-black font-bold p-2 m-2">
             Text Body:
             <br />
             <textarea
@@ -38,7 +38,7 @@ export function Email() {
               }}
             ></textarea>
           </label>
-          <label className="text-white font-bold p-2 m-2">
+          <label className="text-black font-bold p-2 m-2">
             HTML Body:
             <br />
             <textarea
@@ -52,8 +52,8 @@ export function Email() {
             ></textarea>
           </label>
         </div>
-        <div className="p-4 m-8 grow rounded border-solid border-2 bg-[#1e1915] rounded-xl">
-          <span className="text-white font-bold p-2 m-2">
+        <div className="p-4 m-8 grow rounded border-solid border-2 bg-grayColor rounded-xl">
+          <span className="text-black font-bold p-2 m-2">
             Emails: (one per line)
           </span>
           <br />
@@ -78,14 +78,14 @@ export function Email() {
             }}
           ></textarea>
           <br />
-          <span className="text-white p-2 m-2">
+          <span className="text-black p-2 m-2">
             Total Emails (all entries):{" "}
             <span className="font-bold rounded bg-white text-black p-1">
               {totalEmails}
             </span>
           </span>
           <br />
-          <span className="text-white p-2 m-2">
+          <span className="text-black p-2 m-2">
             Valid Emails:{" "}
             <span className="font-bold rounded bg-white text-black p-1">
               {validEmails}

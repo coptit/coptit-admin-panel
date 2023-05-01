@@ -40,7 +40,7 @@ export function App() {
     return (
       <trpc.Provider client={trpcClient} queryClient={queryClient}>
         <QueryClientProvider client={queryClient}>
-          <div className="h-screen bg-[#473C33]">
+          <div className="h-screen bg-offWhite">
             <Login setAuth={setAuth} />
           </div>
         </QueryClientProvider>
@@ -51,8 +51,8 @@ export function App() {
   return (
     <trpc.Provider client={trpcClient} queryClient={queryClient}>
       <QueryClientProvider client={queryClient}>
-        <div className="h-screen bg-[#473C33] flex">
-          <div className="h-full bg-[#FDA769] w-[250px] drop-shadow-2xl">
+        <div className="h-screen bg-offWhite flex">
+          <div className="h-full bg-darkBlue w-[250px] drop-shadow-2xl">
             <Sidebar setService={setService} />
           </div>
           <div className="w-full overflow-hidden">

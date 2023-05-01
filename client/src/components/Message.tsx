@@ -21,7 +21,7 @@ export function Message() {
         <img
           src="https://tiddi.kunalsin9h.dev/_l8inER"
           alt="logo"
-          className="invert h-12 w-12"
+          className="h-12 w-12"
         />{" "}
       </div>
     );
@@ -69,7 +69,7 @@ export function Message() {
       </div>
       <div className="flex justify-content items-center p-4 m-4">
         <label>
-          <span className="text-white text-xl">Select Channel: </span>
+          <span className="text-black text-xl">Select Channel: </span>
           <select
             value={selectChannel}
             onChange={(e) => {
@@ -93,7 +93,7 @@ export function Message() {
         {messageMode === 1 ? (
           <div className="ml-8">
             <label>
-              <span className="text-white text-xl">Message ID: </span>
+              <span className="text-black text-xl">Message ID: </span>
               <input
                 placeholder="Message ID"
                 className="p-2 text-l m-2 border-none rounded bg-white w-52"
@@ -107,7 +107,7 @@ export function Message() {
       </div>
       <div className="flex justify-content items-center p-4 m-4">
         <label>
-          <span className="text-white text-xl">Message JSON Payload: </span>
+          <span className="text-black text-xl">Message JSON Payload: </span>
         </label>
         <textarea
           placeholder="Message content created using discohook.org"
@@ -115,7 +115,7 @@ export function Message() {
           onChange={(e) => {
             setTextareaValue(e.target.value);
           }}
-          className="m-2 rounded h-96 w-96"
+          className="m-2 rounded h-96 w-96 p-4"
         />
       </div>
       <div>
