@@ -49,7 +49,7 @@ export function Login({
             disabled={continueButtonDisabled}
             className=" text-white bg-lightBlue p-2 rounded-l mx-14 my-4 border-solid border-2 border-[#697d36] hover:scale-105 duration-300 hover:bg- disabled:opacity-50 disabled:scale-100 disabled:hover:bg-darkBlue active:bg-black active:text-white"
             onClick={async (e) => {
-              e.preventDefault;
+              e.preventDefault();
 
               const res = await client.auth.mutate({
                 email,

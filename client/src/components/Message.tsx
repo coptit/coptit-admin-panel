@@ -42,7 +42,7 @@ export function Message() {
       <div className="p-8">
         <button
           onClick={(e) => {
-            e.preventDefault;
+            e.preventDefault();
             setMessageMode(0);
           }}
           className={`px-4 py-2 mr-8 drop-shadow-2xl rounded text-black font-bold  ${
@@ -55,7 +55,7 @@ export function Message() {
         </button>
         <button
           onClick={(e) => {
-            e.preventDefault;
+            e.preventDefault();
             setMessageMode(1);
           }}
           className={`px-4 py-2 drop-shadow-2xl rounded text-black font-bold  ${
@@ -105,10 +105,11 @@ export function Message() {
           </div>
         ) : null}
       </div>
-      <div className="flex justify-content items-center p-4 m-4">
+      <div className="{p-4 m-4">
         <label>
-          <span className="text-black text-xl">Message JSON Payload: </span>
+          <span className="text-black text-xl m-2">Message JSON Payload: </span>
         </label>
+          <br />
         <textarea
           placeholder="Message content created using discohook.org"
           value={textareaValue}
@@ -122,7 +123,7 @@ export function Message() {
         <button
           className="font-bold text-black px-8 py-2 m-8 bg-[#F4C868] hover:bg-[#eda812] rounded hover:scale-110 duration-300 active:bg-black active:text-white"
           onClick={async (e) => {
-            e.preventDefault;
+            e.preventDefault();
 
             // send message
             if (messageMode === 0) {

@@ -58,7 +58,7 @@ export function App() {
           <div className="w-full overflow-hidden">
             {service === 0 ? <Home /> : null}
             {service === 1 ? <Message /> : null}
-            {service === 3 ? <Email /> : null}
+            {service === 2 ? <Email /> : null}
           </div>
         </div>
       </QueryClientProvider>

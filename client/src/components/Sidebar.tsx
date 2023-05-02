@@ -39,11 +39,11 @@ export function Sidebar({
       </button>
       <button
         className={`m-4 p-2 rounded  hover:bg-[#93BFCF] hover:scale-105 duration-300 ${
-          active === 3 ? "bg-[#BDCDD6] scale-105" : "bg-[#EEE9DA]"
+          active === 2 ? "bg-[#BDCDD6] scale-105" : "bg-[#EEE9DA]"
         }`}
         onClick={() => {
-          setService(3);
-          setActive(3);
+          setService(2);
+          setActive(2);
         }}
       >
         Email
