@@ -21,7 +21,7 @@ export function Email() {
               placeholder="Email subject"
               className="rounded p-2 m-2 w-[60%] ml-4 text-black"
               onChange={(e) => {
-                setSubject(e.target.value);
+                setSubject(e.target.value.trim());
               }}
             />
           </label>
@@ -34,7 +34,7 @@ export function Email() {
               rows={8}
               cols={60}
               onChange={(e) => {
-                setText(e.target.value);
+                setText(e.target.value.trim());
               }}
             ></textarea>
           </label>
@@ -47,7 +47,7 @@ export function Email() {
               cols={60}
               className="rounded p-2 m-2 text-black"
               onChange={(e) => {
-                setHtml(e.target.value);
+                setHtml(e.target.value.trim());
               }}
             ></textarea>
           </label>
@@ -98,18 +98,99 @@ export function Email() {
         onClick={async (e) => {
           e.preventDefault();
 
-          console.log(html);
+          const send = confirm("Are you sure, you want to send emails!");
 
-          await client.sendMail.mutate({
+          if (!send) return;
+
+          const errorBox = document.getElementById("send-mail-error");
+          const errorBoxMessage = document.getElementById(
+            "send-mail-error-message"
+          );
+
+          if (emails.length === 0 || emails[0] === "") {
+            if (errorBoxMessage?.innerHTML != undefined) {
+              errorBoxMessage.innerHTML =
+                "<p><strong>Error</strong><br /><p>Emails list does not have any verified emails</p>";
+            }
+            errorBox?.showModal();
+            return;
+          }
+
+          if (subject === "" || (text === "" && html === "")) {
+            if (errorBoxMessage?.innerHTML != undefined) {
+              errorBoxMessage.innerHTML =
+                "<p><strong>Error</strong><br /><p>Subject, Text or Html is empty</p>";
+            }
+            errorBox?.showModal(); // expected error
+            return;
+          }
+
+          client.sendMail.mutate({
             emails,
             subject,
             text,
             html,
           });
+
+          await sendMailTracker();
         }}
       >
         Send
       </button>
+
+      <dialog id="send-mail-error" className="py-5 px-10 rounded">
+        <div id="send-mail-error-message"></div>
+        <form method="dialog">
+          <button className="p-2 my-4 rounded bg-gray-200">Understood</button>
+        </form>
+      </dialog>
+
+      <dialog id="send-mail-tracker-modal" className="p-10 w-96">
+        <div className="rounded">
+          <strong>Sending Mail</strong>
+          <p id="send-mail-data">-- unavailable --</p>
+          <button
+            id="send-mail-cancel"
+            className="p-2 my-4 rounded bg-gray-200"
+          >
+            Cancel
+          </button>
+        </div>
+      </dialog>
     </div>
   );
+}
+
+async function sendMailTracker() {
+  const sendMailModal = document.getElementById("send-mail-tracker-modal");
+  const sendMailCancel = document.getElementById("send-mail-cancel");
+  const sendMailData = document.getElementById("send-mail-data");
+  sendMailModal?.showModal(); // expected error
+
+  const websocketURL = "wss://cap-ws.hop.sh";
+  // const websocketURL = "ws://localhost:4003";
+
+  const ws = new WebSocket(websocketURL);
+
+  sendMailCancel?.addEventListener("click", () => {
+    ws.send("ABORT");
+    ws.close();
+    sendMailModal?.close();
+  });
+
+  ws.addEventListener("error", () => {
+    if (sendMailModal?.innerHTML != undefined) {
+      sendMailModal.innerHTML = `<strong>WebSocket Error:</strong><br /><p>Could not able to connect to ${websocketURL}</p>`;
+    }
+  });
+
+  ws.addEventListener("message", (event) => {
+    if (sendMailData != undefined) {
+      sendMailData.textContent = event.data;
+    }
+  });
+
+  window.onbeforeunload = () => {
+    return "Some process is running, closing might cancel the process";
+  };
 }

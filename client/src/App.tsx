@@ -10,13 +10,13 @@ import { AppRouter } from "../../server";
 import { trpc } from "./utils/trpc";
 import React from "react";
 
-// const backendURL = "http://localhost:4001";
-const backendURL = "https://capb.hop.sh";
+// const BackendURL = "http://localhost:4001";
+export const BackendURL = "https://capb.hop.sh";
 
 export const client = createTRPCProxyClient<AppRouter>({
   links: [
     httpBatchLink({
-      url: backendURL,
+      url: BackendURL,
     }),
   ],
 });
@@ -27,13 +27,13 @@ export function App() {
     trpc.createClient({
       links: [
         httpBatchLink({
-          url: backendURL,
+          url: BackendURL,
         }),
       ],
     })
   );
 
-  const [auth, setAuth] = useState(false);
+  const [auth, setAuth] = useState(true);
   const [service, setService] = useState(0);
 
   if (!auth) {

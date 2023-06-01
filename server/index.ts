@@ -5,9 +5,26 @@ import { initTRPC } from "@trpc/server";
 import { createHTTPServer } from "@trpc/server/adapters/standalone";
 import cors from "cors";
 import { z } from "zod";
+import WebSocket, { WebSocketServer } from "ws";
+
 import sendMail, { mailMeta } from "./sendMail";
 import express, { Request, Response } from "express";
 import { DiscordChannel, DiscordChannelInfo } from "./discordResponseType";
+
+let mailAnalysis = "- / -";
+let clientCancel = "";
+
+const wss = new WebSocketServer({ port: 4003 });
+let wsConn: WebSocket.WebSocket;
+
+wss.on("connection", function connection(ws) {
+  ws.on("error", console.error);
+
+  ws.on("message", function message(data) {
+    clientCancel = data.toString();
+  });
+  wsConn = ws;
+});
 
 const t = initTRPC.create();
 
@@ -25,6 +42,8 @@ const appRouter = router({
       })
     )
     .mutation(async ({ input }) => {
+      const totalEmails = input.emails.length;
+      let mailSend = 0;
       for (const email of input.emails) {
         const mailData: mailMeta = {
           to: email,
@@ -33,8 +52,18 @@ const appRouter = router({
           html: input.html ?? "",
         };
 
+        if (clientCancel != "") {
+          return;
+        }
+
         await sendMail(mailData);
+
+        mailSend++;
+        mailAnalysis = `${mailSend} / ${totalEmails}`;
+        wsConn.send(mailAnalysis);
       }
+      clientCancel = "done";
+      wsConn.close();
     }),
 
   auth: publicProcedure
