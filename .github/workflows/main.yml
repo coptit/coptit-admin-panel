@@ -24,9 +24,9 @@ jobs:
     - uses: actions/checkout@v3
     - name: Build the Docker image
       run: |
-        docker build -t ghcr.io/coptit/coptit-admin-panel:latest -f Dockerfile .
+        docker build -t ghcr.io/coptit/coptit-admin-panel:ws -f Dockerfile .
     - name: Push to Github Container Registry (ghcr.io)
       if: github.ref == 'refs/heads/master'
       run: |
         echo "${{ secrets.GHCR }}" | docker login ghcr.io -u "coptit" --password-stdin
-        docker push ghcr.io/coptit/coptit-admin-panel:latest
+        docker push ghcr.io/coptit/coptit-admin-panel:ws
