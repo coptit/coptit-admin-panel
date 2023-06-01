@@ -112,6 +112,7 @@ export function Email() {
               errorBoxMessage.innerHTML =
                 "<p><strong>Error</strong><br /><p>Emails list does not have any verified emails</p>";
             }
+            // @ts-ignore
             errorBox?.showModal();
             return;
           }
@@ -121,6 +122,7 @@ export function Email() {
               errorBoxMessage.innerHTML =
                 "<p><strong>Error</strong><br /><p>Subject, Text or Html is empty</p>";
             }
+            // @ts-ignore
             errorBox?.showModal(); // expected error
             return;
           }
@@ -165,6 +167,7 @@ async function sendMailTracker() {
   const sendMailModal = document.getElementById("send-mail-tracker-modal");
   const sendMailCancel = document.getElementById("send-mail-cancel");
   const sendMailData = document.getElementById("send-mail-data");
+  // @ts-ignore
   sendMailModal?.showModal(); // expected error
 
   const websocketURL = "wss://cap-ws.hop.sh";
@@ -175,6 +178,7 @@ async function sendMailTracker() {
   sendMailCancel?.addEventListener("click", () => {
     ws.send("ABORT");
     ws.close();
+    // @ts-ignore
     sendMailModal?.close();
   });
 
