@@ -19,7 +19,7 @@ export function Message() {
     return (
       <div className="h-full flex justify-center items-center">
         <img
-          src="https://tiddi.kunalsin9h.dev/_l8inER"
+          src="https://tiddi.kunalsin9h.com/_l8inER"
           alt="logo"
           className="h-12 w-12"
         />{" "}

@@ -20,7 +20,7 @@ export function Sidebar({
         }}
       >
         <img
-          src="https://tiddi.kunalsin9h.dev/VMvufrA"
+          src="https://tiddi.kunalsin9h.com/VMvufrA"
           alt="coptit logo"
           className="h-14 w-14 mr-2 invert "
         />
