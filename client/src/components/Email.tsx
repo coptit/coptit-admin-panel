@@ -98,8 +98,6 @@ export function Email() {
         onClick={async (e) => {
           e.preventDefault();
 
-          console.log(html);
-
           await client.sendMail.mutate({
             emails,
             subject,

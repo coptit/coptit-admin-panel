@@ -6,7 +6,7 @@ import { Home } from "./components/Home";
 import { Login } from "./components/Login";
 import { Message } from "./components/Message";
 import { Sidebar } from "./components/Sidebar";
-import { AppRouter } from "../../server";
+import type { AppRouter } from "../../server";
 import { trpc } from "./utils/trpc";
 import React from "react";
 

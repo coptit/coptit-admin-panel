@@ -5,9 +5,10 @@ import { initTRPC } from "@trpc/server";
 import { createHTTPServer } from "@trpc/server/adapters/standalone";
 import cors from "cors";
 import { z } from "zod";
-import sendMail, { mailMeta } from "./sendMail";
+import sendMail from "./sendMail";
+import type { mailMeta } from "./sendMail";
 import express, { Request, Response } from "express";
-import { DiscordChannel, DiscordChannelInfo } from "./discordResponseType";
+import type { DiscordChannel, DiscordChannelInfo } from "./discordResponseType";
 
 const t = initTRPC.create();
 
@@ -173,15 +174,15 @@ const appRouter = router({
 
 export type AppRouter = typeof appRouter;
 
-createHTTPServer({
+// Creating an tRPC Server
+const { listen } = createHTTPServer({
   middleware: cors({
     origin: "*",
   }),
   router: appRouter,
-  createContext() {
-    return {};
-  },
-}).listen(4001);
+});
+
+listen(4001);
 console.log("Started TRPC server at 4001");
 
 /*
