@@ -5,7 +5,7 @@ Sending Bulk / Transactional email for club members.
 
 ## Authors
 
-- [@KunalSin9h](https://github.com/kunalsin9h)
+- [Kunal Singh](https://github.com/kunalsin9h)
 
 ### Stack
 
@@ -69,15 +69,15 @@ This will start both `client` and `server`
 
 `server`
 
-    - `tRPC` server will be serve at `http://localhost:4001`
-    - `Express` server will be serve at `http://localhost:4002`
+- `tRPC` server will be serve at `http://localhost:4001`
+- `Express` server will be serve at `http://localhost:4002`
 
 # API Docs
 
-### Sending Transactionl Emails
+### Sending Transactional Emails
 
 ```Ocaml
-POST http://localhost:4002/**api/sendmail**
+POST http://localhost:4002/api/sendmail
 ```
 
 Request Body
@@ -98,3 +98,7 @@ Response Body
   "messageid": "string"
 }
 ```
+
+# License
+
+[MIT](https://choosealicense.com/licenses/mit/)
