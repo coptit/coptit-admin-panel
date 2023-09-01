@@ -69,6 +69,7 @@ Fill the `.env` file
 Run Dev server
 
 ```bash
+cd ../ # Come back to main repo
 npm run dev
 ```
 
