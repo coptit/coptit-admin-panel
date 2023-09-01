@@ -45,6 +45,27 @@ Download Dependencies
 npm install
 ```
 
+#### Server Require some Environment Variables, this can be provided with `.env` file
+
+Copy the `.env-template` file into `.env` file
+
+```bash
+cd server
+cp .env-template .env
+```
+
+Fill the `.env` file
+
+| Property      | Require | Description                  |
+| ------------- | ------- | ---------------------------- |
+| ADMIN_USER    | yes     | The user email of the Admin  |
+| ADMIN_PASS    | yes     | The Password of the admin    |
+| SMTP_USERNAME | no      | SMTP username                |
+| SMTP_USER     | no      | SMTP user (email@domain.com) |
+| SMTP_PASS     | no      | SMTP password                |
+| BOT_TOKEN     | no      | Discord Bot token            |
+| GUILD_ID      | no      | Discord Channel ID           |
+
 Run Dev server
 
 ```bash
