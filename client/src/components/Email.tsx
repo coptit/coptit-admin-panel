@@ -2,7 +2,11 @@ import React, { useState } from "react";
 import * as EmailValidator from "email-validator";
 import { client } from "../App";
 
-export function Email() {
+export function Email({
+  setHold,
+}: {
+  setHold: React.Dispatch<React.SetStateAction<boolean>>;
+}) {
   const [subject, setSubject] = useState("");
   const [text, setText] = useState("");
   const [html, setHtml] = useState("");
@@ -97,13 +101,14 @@ export function Email() {
         className="w-26 font-bold text-black px-8 py-2 m-8 bg-[#F4C868] hover:bg-[#eda812] rounded hover:scale-110 duration-300 active:bg-black active:text-white "
         onClick={async (e) => {
           e.preventDefault();
-
+          setHold(true);
           await client.sendMail.mutate({
             emails,
             subject,
             text,
             html,
           });
+          setHold(false);
         }}
       >
         Send

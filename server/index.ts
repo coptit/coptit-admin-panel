@@ -33,7 +33,6 @@ const appRouter = router({
           text: input.text ?? "",
           html: input.html ?? "",
         };
-
         await sendMail(mailData);
       }
     }),

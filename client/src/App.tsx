@@ -33,6 +33,17 @@ export function App() {
     })
   );
 
+  const [hold, setHold] = useState(false);
+  const holdCallback = (e: BeforeUnloadEvent) => {
+    e.preventDefault(), (e.returnValue = "");
+  };
+
+  if (hold) {
+    window.addEventListener("beforeunload", holdCallback);
+  } else {
+    window.removeEventListener("beforeunload", holdCallback);
+  }
+
   const [auth, setAuth] = useState(false);
   const [service, setService] = useState(0);
 
@@ -58,7 +69,7 @@ export function App() {
           <div className="w-full overflow-hidden">
             {service === 0 ? <Home /> : null}
             {service === 1 ? <Message /> : null}
-            {service === 2 ? <Email /> : null}
+            {service === 2 ? <Email setHold={setHold} /> : null}
           </div>
         </div>
       </QueryClientProvider>
