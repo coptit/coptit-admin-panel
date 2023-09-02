@@ -23,7 +23,8 @@ Sending Bulk / Transactional email for club members.
 - [zod](https://zod.dev/)
 - [nodemailer](https://nodemailer.com/)
 
-![image](https://tiddi.kunalsin9h.com/eTBJPkO)
+## Demo 
+![image](https://github.com/coptit/coptit-admin-panel/assets/82411321/f770c1d6-ce61-4cf9-b5c4-3cc5ae0ae280)
 
 ### Local Setup
 
