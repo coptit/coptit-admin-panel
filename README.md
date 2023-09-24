@@ -26,6 +26,8 @@ Sending Bulk / Transactional email for club members.
 ## Demo 
 ![image](https://github.com/coptit/coptit-admin-panel/assets/82411321/f770c1d6-ce61-4cf9-b5c4-3cc5ae0ae280)
 
+Docker image is [here](https://github.com/coptit/coptit-admin-panel/pkgs/container/coptit-admin-panel).
+
 ### Local Setup
 
 Clone the repository
